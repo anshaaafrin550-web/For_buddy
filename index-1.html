@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Buddy 🎂</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+*{box-sizing:border-box}body{margin:0;min-height:100vh;overflow:hidden;font-family:"DM Sans",sans-serif;color:#5b4c59;background:#fff7fa}
+.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 15% 15%,#ffe1eb,transparent 31%),radial-gradient(circle at 88% 80%,#e9ddff,transparent 33%),#fff8fb}
+.book{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.page{width:min(650px,100%);min-height:86vh;display:none;align-items:center;justify-content:center}
+.page.active{display:flex;animation:in .55s ease both}@keyframes in{from{opacity:0;transform:translateX(28px) scale(.98)}to{opacity:1;transform:none}}
+.card{width:100%;max-height:84vh;overflow:auto;padding:38px 25px;text-align:center;border-radius:32px;background:#ffffffcc;box-shadow:0 20px 70px #64416424;backdrop-filter:blur(14px);scrollbar-width:none}.card::-webkit-scrollbar{display:none}
+.badge{display:inline-block;padding:8px 14px;border-radius:30px;background:#fff0f5;color:#a06a86;font-size:12px;letter-spacing:1.8px;text-transform:uppercase}
+h1,h2{font-family:"Playfair Display",serif;color:#76566e}h1{font-size:clamp(46px,12vw,78px);margin:18px 0 8px}h2{font-size:clamp(31px,8vw,48px);margin:14px 0}
+.sub,.msg{max-width:520px;margin:16px auto;line-height:1.75}.sub{font-size:18px;color:#776b78}.msg{font-size:16px}
+.icon{font-size:68px;margin:12px}.divider{width:55px;height:2px;background:#dcb9cd;margin:24px auto}
+.btn{border:0;border-radius:999px;padding:14px 23px;background:#8f6a88;color:white;font-weight:600;font-size:15px;cursor:pointer;margin:5px;box-shadow:0 9px 24px #78507830}.secondary{background:#fff;color:#8f6a88;border:1px solid #e5ccda}
+.grid{display:grid;gap:10px;max-width:470px;margin:20px auto}.item{background:#fff5f8;padding:14px 17px;border-radius:19px;text-align:left;line-height:1.5}.pun{font-family:"Playfair Display",serif;font-size:21px;line-height:1.55;color:#76566e;margin:23px auto}.note{background:#fff4f8;padding:20px;border-radius:23px;font-family:"Playfair Display",serif;font-size:19px;line-height:1.6}.small{font-size:13px;color:#a598a5;margin-top:20px}.final{font-family:"Playfair Display",serif;font-size:clamp(28px,7vw,40px);line-height:1.45;color:#76566e}
+.music{position:fixed;right:16px;top:16px;z-index:20;width:46px;height:46px;border:0;border-radius:50%;background:#fffdfdcc;color:#8f6a88;font-size:19px;box-shadow:0 7px 22px #64416422}.music.on{animation:pulse 1.3s ease-in-out infinite}@keyframes pulse{50%{transform:scale(1.08)}}
+.dots{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:10}.dot{width:7px;height:7px;border-radius:50%;background:#d9c4d2}.dot.on{width:20px;border-radius:10px;background:#8f6a88}
+.nav{position:fixed;bottom:35px;left:50%;transform:translateX(-50%);z-index:10}.float{position:fixed;bottom:-35px;z-index:5;pointer-events:none;animation:rise linear forwards}@keyframes rise{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+.conf{position:fixed;top:-10px;width:7px;height:7px;border-radius:2px;z-index:4;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:0}}
+@media(max-height:700px){.card{padding:27px 20px}.page{min-height:87vh}.msg{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<audio id="music" loop preload="auto">
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+<button class="music" id="musicBtn" onclick="toggleMusic()">🎵</button>
+
+<div class="book">
+
+<section class="page active" id="p1"><div class="card">
+<div class="badge">A tiny surprise 🎀</div><div class="icon">💌</div>
+<h1>Hey, Buddy!</h1>
+<p class="sub">Sooo... it's your birthday. 👀<br>Obviously, I had to do something.</p>
+<button class="btn" onclick="next()">Tap to open 🎁</button>
+<div class="small">Warning: birthday vibes ahead. 😂</div>
+</div></section>
+
+<section class="page" id="p2"><div class="card">
+<div class="badge">11 September 🎂</div><div class="icon">🎉</div>
+<h2>Happy Birthday, Buddy!</h2><div class="divider"></div>
+<p class="msg">Hope you have a really good day, eat something nice, laugh a lot and basically enjoy your day properly. 🥳</p>
+<p class="pun"><b>Congratulations on surviving another year. 😂</b><br>Age is just a number... but let's not check yours right now.</p>
+<button class="btn" onclick="next()">Next ✨</button>
+</div></section>
+
+<section class="page" id="p3"><div class="card">
+<div class="badge">Birthday essentials 😌</div>
+<h2>Today's priorities</h2>
+<div class="grid">
+<div class="item">🎂 Cake. Obviously.</div>
+<div class="item">🍕 Something ridiculously tasty.</div>
+<div class="item">😂 At least one proper laugh.</div>
+<div class="item">😴 Some well-deserved rest.</div>
+<div class="item">🥳 Zero boring birthday energy.</div>
+</div>
+<div class="note">Basically: have fun today. The serious stuff can wait. 😌</div>
+<button class="btn" onclick="next()">Next 😄</button>
+</div></section>
+
+<section class="page" id="p4"><div class="card">
+<div class="badge">Okay, jokes apart 🌷</div>
+<h2>Just some good wishes</h2>
+<p class="msg">I genuinely hope this year brings you lots of good things.</p>
+<div class="grid">
+<div class="item">✨ Good health</div>
+<div class="item">🚀 Success in whatever you're working towards</div>
+<div class="item">😊 Lots of happiness</div>
+<div class="item">🤝 Good people around you</div>
+<div class="item">😂 Plenty of reasons to laugh</div>
+<div class="item">☕ Hopefully, fewer annoying Mondays</div>
+</div>
+<p class="msg"><b>Hope you get everything you're working for and more.</b></p>
+<p class="msg">Have a really good year ahead, Buddy. And don't forget to enjoy the little things too. 🤍</p>
+<button class="btn" onclick="next()">One more 🎀</button>
+</div></section>
+
+<section class="page" id="p5"><div class="card">
+<div class="badge">Very important announcement 😂</div>
+<h2>Birthday rules</h2>
+<div class="note"><b>Rule 1:</b> Eat cake. 🎂<br><br><b>Rule 2:</b> Enjoy your day. 😌<br><br><b>Rule 3:</b> Accept birthday wishes like a celebrity. 😎<br><br><b>Rule 4:</b> No boring allowed. 🥳</div>
+<p class="pun">Have a <b>grate</b> birthday! 🧀<br>Okay, I'll stop before this gets too cheesy.</p>
+<button class="btn" onclick="next()">Final page 🎁</button>
+</div></section>
+
+<section class="page" id="p6"><div class="card">
+<div class="badge">Okay, that's it! 🥳</div><div class="icon">🎂</div>
+<div class="final">Happy Birthday, Buddy! ✨</div><div class="divider"></div>
+<p class="msg">Have a fun day, eat lots of cake, smile a lot and have an absolutely awesome year ahead!</p>
+<p class="msg"><b>Hope 11 September treats you well. 😌🎉</b></p>
+<div class="small">Made with lots of good wishes ✨</div>
+<button class="btn secondary" onclick="restart()">Read again ↻</button>
+</div></section>
+
+</div>
+<div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+<div class="nav"><button class="btn secondary" id="back" onclick="back()" style="display:none">← Back</button></div>
+
+<script>
+let page=1,total=6;
+function startMusic(){
+ const m=document.getElementById("music");m.volume=.25;
+ m.play().then(()=>{musicBtn.classList.add("on");musicBtn.textContent="🔊"}).catch(()=>{});
+}
+function toggleMusic(){
+ const m=document.getElementById("music");
+ if(m.paused)startMusic();else{m.pause();musicBtn.classList.remove("on");musicBtn.textContent="🎵"}
+}
+function show(n){
+ document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+ document.getElementById("p"+n).classList.add("active");
+ document.querySelectorAll(".dot").forEach((x,i)=>x.classList.toggle("on",i===n-1));
+ document.getElementById("back").style.display=n>1?"inline-block":"none";
+ if(n===2)confetti();
+ if(n===6){confetti();for(let i=0;i<25;i++)setTimeout(heart,i*100)}
+}
+function next(){startMusic();if(page<total){page++;show(page)}}
+function back(){if(page>1){page--;show(page)}}
+function restart(){page=1;show(page)}
+function confetti(){
+ for(let i=0;i<40;i++){let c=document.createElement("div");c.className="conf";c.style.left=Math.random()*100+"vw";c.style.animationDelay=Math.random()*1.2+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500)}
+}
+function heart(){
+ let h=document.createElement("div");h.className="float";h.textContent=["♡","♥","✦","✨","🌷"][Math.floor(Math.random()*5)];h.style.left=Math.random()*100+"vw";h.style.fontSize=13+Math.random()*17+"px";h.style.animationDuration=5+Math.random()*4+"s";document.body.appendChild(h);setTimeout(()=>h.remove(),9000)
+}
+</script>
+</body>
+</html>
