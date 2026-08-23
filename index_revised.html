@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>A Little Birthday Surprise 🎂</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"DM Sans",sans-serif}
+body{
+  min-height:100vh;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(circle at 20% 15%,rgba(255,139,196,.25),transparent 28%),
+    radial-gradient(circle at 85% 80%,rgba(166,117,255,.25),transparent 30%),
+    linear-gradient(135deg,#17131b,#241622 55%,#17131b);
+}
+button{font:inherit}
+.music{
+  position:fixed;right:18px;top:18px;z-index:20;
+  width:58px;height:58px;border:0;border-radius:50%;
+  background:rgba(255,255,255,.13);color:#f1a6df;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  font-size:27px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.12);
+}
+.music.hint{animation:pulse 1.5s infinite}
+.music-tip{
+  position:fixed;right:84px;top:27px;z-index:19;
+  background:rgba(30,22,31,.94);border:1px solid rgba(255,190,231,.28);
+  color:#f6d9ef;padding:9px 13px;border-radius:14px;font-size:13px;
+  box-shadow:0 8px 25px rgba(0,0,0,.22);
+}
+@keyframes pulse{50%{transform:scale(1.08);box-shadow:0 0 0 9px rgba(241,166,223,.08)}}
+
+.app{height:100vh;display:flex;align-items:center;justify-content:center;padding:25px}
+.card{
+  width:min(650px,100%);height:min(760px,88vh);
+  position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:30px;background:rgba(19,17,21,.76);
+  box-shadow:0 25px 80px rgba(0,0,0,.35);
+  backdrop-filter:blur(14px);
+}
+.page{
+  position:absolute;inset:0;padding:54px 34px 82px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;opacity:0;transform:translateX(30px);
+  pointer-events:none;transition:opacity .45s ease,transform .45s ease;
+}
+.page.active{opacity:1;transform:translateX(0);pointer-events:auto}
+.emoji{font-size:72px;margin-bottom:20px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.25))}
+h1,h2{font-family:"Playfair Display",serif;color:#efb8df;margin:0 0 18px;line-height:1.12}
+h1{font-size:clamp(38px,8vw,62px)}
+h2{font-size:clamp(31px,7vw,48px)}
+p{max-width:500px;font-size:17px;line-height:1.8;color:#eee4ed;margin:9px 0}
+.small{font-size:14px;color:#bdb0bb}
+.pill{
+  margin-top:15px;padding:10px 16px;border-radius:999px;
+  background:rgba(239,184,223,.1);border:1px solid rgba(239,184,223,.2);
+  color:#efc9e5;font-size:14px
+}
+.joke{
+  margin:12px 0;padding:16px 20px;border-radius:20px;
+  background:rgba(255,255,255,.055);width:min(480px,100%);
+  color:#f2e8f0;line-height:1.55
+}
+.divider{width:90px;height:3px;border-radius:10px;background:#b66a9f;margin:7px 0 18px}
+.nav{
+  position:absolute;bottom:20px;left:0;right:0;
+  display:flex;justify-content:center;align-items:center;gap:9px;z-index:5
+}
+.dot{width:9px;height:9px;border-radius:50%;background:#766b76;border:0;padding:0}
+.dot.active{width:38px;background:#d89ac6;border-radius:10px}
+.controls{position:absolute;bottom:57px;left:0;right:0;display:flex;justify-content:center;gap:10px;z-index:6}
+.controls button{
+  border:1px solid rgba(239,184,223,.22);background:rgba(255,255,255,.08);
+  color:#efc9e5;border-radius:999px;padding:11px 18px;cursor:pointer
+}
+.controls button:disabled{opacity:.35}
+.sparkles{font-size:28px;margin-top:12px}
+@media(max-height:650px){
+  .card{height:92vh}.page{padding-top:32px;padding-bottom:90px}
+  .emoji{font-size:54px;margin-bottom:10px}p{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<audio id="birthdayMusic" src="birthday.mp3" preload="auto" loop></audio>
+
+<button class="music hint" id="musicBtn" aria-label="Play birthday music">🎵</button>
+<div class="music-tip" id="musicTip">Tap 🎵 for the birthday music</div>
+
+<div class="app">
+<div class="card">
+
+<section class="page active">
+  <div class="emoji">🎁</div>
+  <h1>Happy Birthday,<br>Buddy! 🌷</h1>
+  <div class="divider"></div>
+  <p>Okay, before this gets unnecessarily dramatic… 😌</p>
+  <p>Here’s a tiny birthday surprise for you.</p>
+  <div class="pill">Best opened with the music on 🎵</div>
+</section>
+
+<section class="page">
+  <div class="emoji">🎂</div>
+  <h2>Official Birthday Announcement 📢</h2>
+  <p>Congratulations! You have successfully completed another year of being you.</p>
+  <div class="joke">Side effects may include extra cake, random happiness and absolutely no guilt about eating dessert twice. 😂</div>
+  <p class="small">Please use your birthday privileges responsibly.</p>
+</section>
+
+<section class="page">
+  <div class="emoji">😌</div>
+  <h2>A Few Things I Wish For You</h2>
+  <p>More peaceful days.</p>
+  <p>More reasons to laugh.</p>
+  <p>Good people, good opportunities and good surprises.</p>
+  <p>And enough happiness to make the ordinary days feel special too. ✨</p>
+</section>
+
+<section class="page">
+  <div class="emoji">🥳</div>
+  <h2>One Important Reminder</h2>
+  <p>You're allowed to celebrate yourself today.</p>
+  <p>Eat the cake. Ignore the calories. Take the compliments.</p>
+  <div class="joke">And yes, you are officially required to have a very good day. No arguments. 😎</div>
+</section>
+
+<section class="page">
+  <div class="emoji">🌟</div>
+  <h2>Have a Really Happy Birthday!</h2>
+  <div class="divider"></div>
+  <p>May this year bring you peace, laughter, beautiful moments and plenty of reasons to smile.</p>
+  <p>Wishing you a genuinely happy year ahead. 🤍</p>
+  <div class="sparkles">✨ 🎈 ✨</div>
+</section>
+
+<div class="controls">
+  <button id="prev">← Back</button>
+  <button id="next">Next →</button>
+</div>
+
+<div class="nav" id="dots"></div>
+</div>
+</div>
+
+<script>
+const pages=[...document.querySelectorAll('.page')];
+const dots=document.getElementById('dots');
+const prev=document.getElementById('prev');
+const next=document.getElementById('next');
+const music=document.getElementById('birthdayMusic');
+const musicBtn=document.getElementById('musicBtn');
+const musicTip=document.getElementById('musicTip');
+let current=0;
+
+pages.forEach((_,i)=>{
+  const d=document.createElement('button');
+  d.className='dot'+(i===0?' active':'');
+  d.setAttribute('aria-label','Page '+(i+1));
+  d.onclick=()=>show(i);
+  dots.appendChild(d);
+});
+
+function show(i){
+  current=Math.max(0,Math.min(pages.length-1,i));
+  pages.forEach((p,n)=>p.classList.toggle('active',n===current));
+  [...dots.children].forEach((d,n)=>d.classList.toggle('active',n===current));
+  prev.disabled=current===0;
+  next.disabled=current===pages.length-1;
+}
+prev.onclick=()=>show(current-1);
+next.onclick=()=>show(current+1);
+
+musicBtn.onclick=async()=>{
+  try{
+    if(music.paused){
+      await music.play();
+      musicBtn.textContent='🔊';
+      musicBtn.classList.remove('hint');
+      musicTip.textContent='Music is on 🎶';
+    }else{
+      music.pause();
+      musicBtn.textContent='🎵';
+      musicTip.textContent='Tap 🎵 to play music';
+    }
+  }catch(e){
+    musicTip.textContent='Tap 🎵 once more to play';
+  }
+  setTimeout(()=>musicTip.style.display='none',1800);
+};
+
+setTimeout(()=>musicTip.style.display='none',7000);
+show(0);
+</script>
+</body>
+</html>
